@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 17:12:12 by rthammat          #+#    #+#             */
-/*   Updated: 2022/06/13 23:05:31 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:45:54 by rath             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,21 @@ int	main(int argc, char **argv)
 	struct sigaction	sa;
 	pid_t				server_pid;
 
+	if (argc != 3 || !ft_str_isnum(argv[1]))
+	{
+		ft_putstr_fd("Cannot execute program!!!!\n", 1);
+		ft_putstr_fd("client need 3 arguments\n", 1);
+		ft_putstr_fd("./client number \"message\"\n", 1);
+		exit(1);
+	}
 	sigemptyset(&sa.sa_mask);
 	server_pid = ft_atoi(argv[1]);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = &handler_sigusr;
-	if (argc == 3)
-	{
-		if (!argv[2])
-			exit(1);
-		sigaction(SIGUSR1, &sa, 0);
-		sigaction(SIGUSR2, &sa, 0);
-		send_str(server_pid, argv[2]);
-		while (1)
-			pause();
-	}
-	else
-		return (1);
+	sigaction(SIGUSR1, &sa, 0);
+	sigaction(SIGUSR2, &sa, 0);
+	send_str(server_pid, argv[2]);
+	while (1)
+		pause();
 	return (0);
 }

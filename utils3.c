@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:37:30 by rthammat          #+#    #+#             */
-/*   Updated: 2022/06/13 23:10:35 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/06/14 19:06:24 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,17 @@ void	cli_error_handle(void)
 {
 	ft_putstr_fd("client: error\n", 1);
 	exit(1);
+}
+
+int	ft_str_isnum(char *s)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+	{
+		if (!(s[i] >= '0' && s[i] <= '9'))
+			return (0);
+	}
+	return (1);
 }

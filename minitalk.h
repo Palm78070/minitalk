@@ -6,7 +6,7 @@
 /*   By: rthammat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:03:14 by rthammat          #+#    #+#             */
-/*   Updated: 2022/06/13 21:56:06 by rthammat         ###   ########.fr       */
+/*   Updated: 2022/06/14 19:05:06 by rthammat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strdup(const char *s1);
 char	*ft_addalloc_c(char *msg, char c);
 void	cli_error_handle(void);
+int		ft_str_isnum(char *s);
 
 #endif
